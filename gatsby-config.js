@@ -71,7 +71,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         trackingIds: [
-          metaConfig.ga, // Google Analytics / GA
+          metaConfig.ga,
         ],
       },
     },
