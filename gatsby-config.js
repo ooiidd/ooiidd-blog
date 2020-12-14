@@ -97,21 +97,25 @@ module.exports = {
             },
             query: `
               {
-                allMarkdownRemark(sort: {order: DESC, fields: date}) {
+                allMarkdownRemark(
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                ) {
                   edges {
                     node {
-                      title
-                      slug
                       excerpt
-                      date
-                   }
+                      html
+                      fields { slug }
+                      frontmatter {
+                        title
+                        date
+                      }
+                    }
                   }
                 }
               }
             `,
             output: "/rss.xml",
-            title:"selest Blog RSS Feed",
-            match:"^/",
+            title:"selest",
           },
         ],
       },
