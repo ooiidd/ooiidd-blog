@@ -5,9 +5,9 @@ category: 'TDD'
 draft: true
 ---
 
-#JUnit5 - 기본(1)
+#Spring + JUnit5(1)
 
-##1. Annotation
+##1. JUnit Annotation
 - @BeforeAll 
    - 현재 클래스의 모든 테스트 메서드보다 먼저 실행.
    - static 이어야함.
@@ -25,5 +25,25 @@ draft: true
 
 ##2.Assertion
 - assertTrue
-- assertThat
+- assertEquals
 - assertAll
+  - assertion을 그룹화 하여 실행.
+  - 실패의 경우가 있더라도 그룹에 있는 assertion 구문 모두 실행
+  ```java
+  class Assertion{
+    @Test
+    void assertAllTest(){
+      assertAll("person",
+        () -> assertEquals(1,1),
+        () -> assertEquals(2,2)
+      );
+    }
+  }
+  ```
+
+##3.SpringJUnit Annotation
+- @SpringJUnitConfig
+  - @ExtendWith 어노테이션과 @ContextConfiguration 어노테이션을 합친 어노테이션이다.
+- @SpringJUnitWebConfig
+  - 위의 @SpringJUnitConfig 어노테이션에서 @WebAppConfiguration이 추가된 어노테이션이다.
+
