@@ -46,4 +46,3 @@ draft: true
   - @ExtendWith 어노테이션과 @ContextConfiguration 어노테이션을 합친 어노테이션이다.
 - @SpringJUnitWebConfig
   - 위의 @SpringJUnitConfig 어노테이션에서 @WebAppConfiguration이 추가된 어노테이션이다.
-
