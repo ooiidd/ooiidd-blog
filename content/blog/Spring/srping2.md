@@ -1,6 +1,6 @@
 ---
 title: 'Spring(2) - ApplicationContext'
-date: 2021-05-17
+date: 2021-05-16
 category: 'Spring'
 draft: false
 ---
