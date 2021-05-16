@@ -2,7 +2,7 @@
 title: 'Spring(4) - 데이터 바인딩'
 date: 2021-05-17 02:21:13
 category: 'Spring'
-draft: true
+draft: false
 ---
 #데이터 바인딩
 - 사용 되는곳
