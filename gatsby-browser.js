@@ -1,7 +1,7 @@
 // custom typefaces
 require('typeface-noto-sans-kr')
 require('typeface-catamaran')
-
+require('prismjs/themes/prism-solarizedlight.css')
 // polyfill
 require('intersection-observer')
 
