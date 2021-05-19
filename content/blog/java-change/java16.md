@@ -1,6 +1,6 @@
 ---
 title: 'Java16 변경점'
-date: 2021-05-18 19:21:13
+date: 2021-05-20 02:31:13
 category: 'Java-Change'
 draft: true
 ---
@@ -10,11 +10,15 @@ draft: true
 
 오늘은 자바 16버전 변경점을 정리해보려 합니다.
 
-언제나 테클은 환연합니다.
+모든 변경점을 정리하지는 않았습니다.
+
+모든 변경점을 확인하기위해서는 [여기](http://jdk.java.net/16/release-notes) 를 확인하시면 됩니다.
+
+언제나 테클은 환영합니다.
 
 
 ##DateTimeFormatter에 'B' 추가
-새로운 포맷터 패턴, 문자 'B'및 지원 방법이 java.time.format.DateTimeFormatter/DateTimeFormatterBuilder클래스 에 추가되었습니다 . day periods유니 코드 컨소시엄의 CLDR ( https://unicode.org/reports/tr35/tr35-dates.html#dayPeriods )에 정의 된 패턴 및 메서드 변환 입니다. 이제 애플리케이션은 오전 / 오후뿐만 아니라 "아침"또는 "야간"과 같은 하루의 기간을 표현할 수 있습니다. 다음 예제는 일 기간 변환을 보여줍니다.
+새로운 포맷터 패턴, 문자 'B'및 지원 방법이 java.time.format.DateTimeFormatter/DateTimeFormatterBuilder클래스 에 추가되었습니다 . day periods유니 코드 [컨소시엄](https://unicode.org/reports/tr35/tr35-dates.html#dayPeriods) 에 정의 된 패턴 및 메서드 변환 입니다. 이제 애플리케이션은 오전 / 오후뿐만 아니라 "아침"또는 "야간"과 같은 하루의 기간을 표현할 수 있습니다. 다음 예제는 일 기간 변환을 보여줍니다.
 
 ```java
 LocalDateTime localDateTime = LocalDateTime.of(2021,05,18,0,1);
@@ -106,5 +110,28 @@ record Rational(int num, int denom) {
         this.num = num;
         this.denom = denom;
     }
+}
+```
+
+##instanceof 의 패턴 매칭
+instanceof 로 확인 후 별도의 캐스팅 없이 바로 사용 가능하다.
+이전의 코드를 보자.
+아래 함수는 Object를 받고 String type이면 스트링을 다시 되돌려준다.
+```java
+public static String prevString(Object obj){
+    if(obj instanceof String){
+        return (String) obj;
+    }
+    return "no";
+}
+```
+
+자바16의 변경으로 위의 코드를 아래와 같이 사용 할 수 있다.
+```java
+public static String isString(Object obj){
+    if(obj instanceof String s){
+        return s;
+    }
+    return "no";
 }
 ```
