@@ -2,7 +2,7 @@
 title: 'Java16 변경점'
 date: 2021-05-20 02:31:13
 category: 'Java-Change'
-draft: true
+draft: false
 ---
 #JAVA16 변경점
 
