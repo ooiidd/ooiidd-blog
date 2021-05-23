@@ -1,8 +1,8 @@
 ---
 title: 'Java15 변경점'
-date: 2021-05-21 18:00
+date: 2021-05-23 18:00
 category: 'Java-Change'
-draft: true
+draft: false
 ---
 
 안녕하세요 홍성훈 입니다.
@@ -19,4 +19,9 @@ draft: true
 - CharSequence인터페이스에서 isEmpty메서드 추가됨에따라 이를 구현하는 StringBuffer, StringBuilder, String 등에서
 isEmpty메서드를 사용가능하다.
   
+  
+##TreeMap 클래스 putIfAbsent, computeIfAbsent, computeIfPresent, compute, merge methods 추가
+- 위의 메서드들이 추가되었지만 computeIfAbsent메서드는 Java16버전에서 버그가 수정되었다. 그러므로 computeIfAbsent메서드를 15버전에서
+사용하는 경우 16버전으로 업그레이드 하거나 재정의해서 사용할것.
+- [버그 픽스](http://jdk.java.net/16/release-notes#JDK-8259622)
 
