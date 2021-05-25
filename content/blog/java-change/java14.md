@@ -1,13 +1,13 @@
 ---
-title: 'Java15 변경점'
-date: 2021-05-23 18:00
+title: 'Java14 변경점'
+date: 2021-05-25 18:00
 category: 'Java-Change'
-draft: false
+draft: true
 ---
 
 안녕하세요 홍성훈 입니다.
 
-오늘은 자바 15버전 변경점을 정리해보려 합니다.
+오늘은 자바 14버전 변경점을 정리해보려 합니다.
 
 모든 변경점을 정리하지는 않았습니다.
 
@@ -15,13 +15,28 @@ draft: false
 
 언제나 테클은 환영합니다.
 
-##CharSequence 인터페이스에 isEmpty 메서드 추가
-- CharSequence인터페이스에서 isEmpty메서드 추가됨에따라 이를 구현하는 StringBuffer, StringBuilder, String 등에서
-isEmpty메서드를 사용가능하다.
-  
-  
-##TreeMap 클래스 putIfAbsent, computeIfAbsent, computeIfPresent, compute, merge methods 추가
-- 위의 메서드들이 추가되었지만 computeIfAbsent메서드는 Java16버전에서 버그가 수정되었다. 그러므로 computeIfAbsent메서드를 15버전에서
-사용하는 경우 16버전으로 업그레이드 하거나 재정의해서 사용할것.
-- [버그 픽스](http://jdk.java.net/16/release-notes#JDK-8259622)
+##통화 형식 지원
+- NumberFormat에서 통화형식을 지원합니다.
 
+```java
+public class NumberFormatTest {
+    public static void main(String[] args) {
+        NumberFormat format = NumberFormat.getCurrencyInstance(Locale.CANADA);
+        System.out.println(format.format(123));
+        System.out.println(NumberFormat.getCurrencyInstance(Locale.KOREA).format(123));
+    }
+}
+```
+```text
+$123.00
+₩123
+```
+
+##Z Garbage Collector를 실험적으로 사용 가능하다.
+
+##Parallel GC 향상
+- Parallel GC는 병렬 작업을 예약하기 위해 다른 수집기와 동일한 작업 관리 메커니즘을 채택했다. 이로인해 성능이 크게 향상되었다.
+
+##G1 GC에서 NUMA 인식 메모리 할당
+- 이제 G1 가비지 수집기는 가비지 수집 간에 젊은 세대의 동일한 NUMA 노드에 개체를 할당하고 유지하려고 시도합니다. 이는 병렬 GC NUMA 인식과 유사합니다.
+- G1은 엄격한 인터리브를 사용하여 사용 가능한 모든 NUMA 노드에 Humongous 및 Old 영역을 균등하게 배포하려고 시도합니다. 젊은 세대에서 오래된 세대로 복사된 개체를 배치하는 것은 무작위입니다.
