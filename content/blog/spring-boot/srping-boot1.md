@@ -17,4 +17,18 @@ draft: true
 - Jetty 10.0
 - Undertow 2.0
 
+## Runner
+- SpringApplication이 시작된 후 특정 코드를 실행해야하는 경우 사용
+- ApplicationRunner 또는 CommandLineRunner 인터페이스를 구현하여 사용
+- Applicaion.run(...)이 완료되기 직전에 한번 실행됨
 
+ex)
+```java
+@Component
+public class MyCommandLineRunner implements CommandLineRunner {
+    @Override
+    public void run(String... args) {
+        // Do something...
+    }
+}
+```
