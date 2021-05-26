@@ -40,3 +40,16 @@ $123.00
 ##G1 GC에서 NUMA 인식 메모리 할당
 - 이제 G1 가비지 수집기는 가비지 수집 간에 젊은 세대의 동일한 NUMA 노드에 개체를 할당하고 유지하려고 시도합니다. 이는 병렬 GC NUMA 인식과 유사합니다.
 - G1은 엄격한 인터리브를 사용하여 사용 가능한 모든 NUMA 노드에 Humongous 및 Old 영역을 균등하게 배포하려고 시도합니다. 젊은 세대에서 오래된 세대로 복사된 개체를 배치하는 것은 무작위입니다.
+
+##Concurrent Mark and Sweep(CMS) Garbage Collector 제거
+
+##Thread Suspend/Resume Deprecated
+다음의 메서드들이 삭제를위해 Deprecated되었다.
+- Thread.suspend()
+- Thread.resume()
+- ThreadGroup.suspend()
+- ThreadGroup.resume()
+- ThreadGroup.allowThreadSuspension(boolean)
+
+##ParallelScavenge + Serial Old GC 조합 Deprecated
+
