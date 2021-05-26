@@ -1,5 +1,5 @@
 ---
-title: 'Java16 변경점'
+title: 'Java16 주요 변경점'
 date: 2021-05-20 02:31:13
 category: 'Java-Change'
 draft: false

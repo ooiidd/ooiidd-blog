@@ -1,5 +1,5 @@
 ---
-title: 'Java15 변경점'
+title: 'Java15 주요 변경점'
 date: 2021-05-23 18:00
 category: 'Java-Change'
 draft: false

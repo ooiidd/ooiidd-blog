@@ -1,8 +1,8 @@
 ---
-title: 'Java14 변경점'
+title: 'Java14 주요 변경점'
 date: 2021-05-25 18:00
 category: 'Java-Change'
-draft: true
+draft: false
 ---
 
 안녕하세요 홍성훈 입니다.
