@@ -23,4 +23,5 @@ draft: true
 - Spring Boot 정리
   - [Spring Boot Docs](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)
   
+- ZGC
 - TDC 정리
