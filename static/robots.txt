@@ -1,2 +1,3 @@
 User-agent: *
 Disallow:
+Sitemap: https://ooiidd.netlify.app/sitemap.xml
