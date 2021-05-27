@@ -11,7 +11,7 @@ draft: false
 
 모든 변경점을 정리하지는 않았습니다.
 
-모든 변경점을 확인하기위해서는 [여기](https://www.oracle.com/java/technologies/javase/15all-relnotes.html) 를 확인하시면 됩니다.
+모든 변경점을 확인하기위해서는 [여기](https://www.oracle.com/java/technologies/javase/14all-relnotes.html) 를 확인하시면 됩니다.
 
 언제나 테클은 환영합니다.
 
