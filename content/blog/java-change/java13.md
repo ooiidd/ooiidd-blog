@@ -5,7 +5,7 @@ category: 'Java-Change'
 draft: false
 ---
 
-안녕하세요 홍성훈 입니다.
+안녕하세요 selest 입니다.
 
 오늘은 자바 13버전 변경점을 정리해보려 합니다.
 
