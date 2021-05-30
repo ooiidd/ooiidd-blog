@@ -13,38 +13,40 @@ draft: false
    
 ---
 2. dependency 추가
-
 - Maven
 ```xml
-<dependencies>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-autoconfigure</artifactId>
-        <version>2.5.0</version>
-    </dependency>
-
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-autoconfigure-processor</artifactId>
-        <version>2.5.0</version>
-        <optional>true</optional>
-    </dependency>
-</dependencies>
-
-<dependencyManagement>
+<project>
+    ...
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-dependencies</artifactId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
             <version>2.5.0</version>
-            <type>pom</type>
-            <scope>import</scope>
+        </dependency>
+    
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure-processor</artifactId>
+            <version>2.5.0</version>
+            <optional>true</optional>
         </dependency>
     </dependencies>
-</dependencyManagement>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.5.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
 ```
 
 - Gradle
+
 ```groovy
 plugins {
     id 'java'
@@ -71,7 +73,6 @@ publishing{
 
 ---
 3. 자바 Bean과 Spring Configuration 추가
-
 ```java
 public class Item {
     private String name;
@@ -116,12 +117,12 @@ public class ItemConfiguration {
 ```
 ---
 4. Maven Local Repo로 publish
-- Maven : mvn install
-- Gradle : gradle publishToMavenLocal
+    - Maven : mvn install
+    - Gradle : gradle publishToMavenLocal
 ---
 5. 사용
-- Maven : dependency에 위의 2번내용에서 추가한 artifact를 등록하여 사용.
-- Gradle : Maven과 마찬가지인데 repositories에 mavenLocal() 추가
+    - Maven : dependency에 위의 2번내용에서 추가한 artifact를 등록하여 사용.
+    - Gradle : Maven과 마찬가지인데 repositories에 mavenLocal() 추가
 ```groovy
 repositories {
     mavenCentral()
