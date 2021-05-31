@@ -44,7 +44,7 @@ date: 2021-05-31 15:21:13 category: 'Deep-Learning' draft: false
    원핫이 아닐때는 2 라고 y값을 표현한다.
    
    
-#전체 소스   
+##전체 소스   
 ```python
 model = Sequential([
     Flatten(input_shape=(10, 10)),
@@ -69,4 +69,69 @@ history = model.fit(x_train, y_train,
                    
 model.load_weights(checkpoint_path)
 model.evaluate(x_valid, y_valid)
+```
+
+
+#tensorflow-datasets 전처리
+
+```python
+train_dataset = tfds.load('iris', split='train[:80%]')
+test_dataset = tfds.load('iris', split='train[80%:]')
+
+def preprocess(data):
+   x = data['features']
+   y = data['label']
+   y = tf.one_hot(y, 3)
+   return x, y
+   
+batch_size=10
+train_data = train_dataset.map(preprocess).batch(batch_size)
+test_data = test_dataset.map(preprocess).batch(batch_size)
+
+model = tf.keras.models.Sequential([
+    Dense(512, activation='relu', input_shape=(4,)),
+    Dense(256, activation='relu'),
+    Dense(128, activation='relu'),
+    Dense(64, activation='relu'),
+    Dense(32, activation='relu'),
+    Dense(3, activation='softmax'),
+])
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['acc'])
+checkpoint_path = "my_checkpoint.ckpt"
+checkpoint = ModelCheckpoint(filepath=checkpoint_path, 
+                             save_weights_only=True, 
+                             save_best_only=True, 
+                             monitor='val_loss', 
+                             verbose=1)
+                             
+history = model.fit(train_data,
+                    validation_data=(valid_data),
+                    epochs=20,
+                    callbacks=[checkpoint],
+                   )
+                   
+```
+
+#시각화
+```python
+import matplotlib.pyplot as plt
+#오차 시각화
+plt.figure(figsize=(12, 9))
+plt.plot(np.arange(1, 21), history.history['loss'])
+plt.plot(np.arange(1, 21), history.history['val_loss'])
+plt.title('Loss / Val Loss', fontsize=20)
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend(['loss', 'val_loss'], fontsize=15)
+plt.show()
+
+#정확도 시각화
+plt.figure(figsize=(12, 9))
+plt.plot(np.arange(1, 21), history.history['acc'])
+plt.plot(np.arange(1, 21), history.history['val_acc'])
+plt.title('Acc / Val Acc', fontsize=20)
+plt.xlabel('Epochs')
+plt.ylabel('Acc')
+plt.legend(['acc', 'val_acc'], fontsize=15)
+plt.show()
 ```
