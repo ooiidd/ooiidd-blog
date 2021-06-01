@@ -2,7 +2,7 @@
 title: 'TDC(1)'
 date: 2021-05-31 14:21:13
 category: 'Deep-Learning'
-draft: false
+draft: true
 ---
 
 #기본 모델

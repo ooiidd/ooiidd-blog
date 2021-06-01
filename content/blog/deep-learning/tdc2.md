@@ -1,6 +1,8 @@
 ---
 title: 'TDC(2)'
-date: 2021-05-31 15:21:13 category: 'Deep-Learning' draft: false
+date: 2021-05-31 15:21:15
+category: 'Deep-Learning'
+draft: true
 ---
 
 # Image 모델
