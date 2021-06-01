@@ -1,6 +1,6 @@
 ---
 title: 'TDC(1)'
-date: 2021-05-31 14:21:13
+date: 2021-05-30 12:25:13
 category: 'Deep-Learning'
 draft: true
 ---

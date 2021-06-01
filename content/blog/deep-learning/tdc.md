@@ -1,6 +1,6 @@
 ---
 title: 'tensorflow developer certification'
-date: 2021-05-31 13:21:13
+date: 2021-05-31 12:21:13
 category: 'Deep-Learning'
 draft: false
 ---
