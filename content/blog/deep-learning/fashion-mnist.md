@@ -139,7 +139,7 @@ draft: false
                                 
    history = model.fit(x_train, y_train,
                        validation_data=(x_valid, y_valid),
-                       epochs=20,
+                       epochs=15,
                        callbacks=[checkpoint],
                       )
                       

@@ -14,7 +14,7 @@ draft: false
 |Category2|fashion-mnist|0.33|0.89|0.3298|0.8881| | [fashion-mnist](../../deep-learning/fashion-mnist)
 |Category3|cats vs dogs|0.3158|0.8665|0.1626|0.9295| | [cats-dogs](../../deep-learning/cats-dogs)
 |Category3|horses or humans(A)|0.028|0.98||
-|Category3|rps|0.0871|0.97||
+|Category3|rps|0.0871|0.97|0.0668|0.9762
 |Category3|horese or humans(B)|0.51|||
 |Category4|sarcasm||||
 |Category5|sunspot(A, Lambda)||val_mae 13.5||

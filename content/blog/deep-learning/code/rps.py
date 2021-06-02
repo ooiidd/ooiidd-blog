@@ -37,11 +37,11 @@ TRAINING_DIR = "tmp/rps/"
 
 training_datagen = ImageDataGenerator(
     rescale=1. / 255,
-    rotation_range=40,
-    width_shift_range=0.2,
-    height_shift_range=0.2,
-    shear_range=0.2,
-    zoom_range=0.2,
+    rotation_range=5,
+    width_shift_range=0.05,
+    height_shift_range=0.05,
+    shear_range=0.05,
+    zoom_range=0.05,
     horizontal_flip=True,
     fill_mode='nearest',
     validation_split=0.2
@@ -71,6 +71,8 @@ model = Sequential([
     MaxPooling2D(2, 2),
     Conv2D(128, (3, 3), activation='relu'),
     MaxPooling2D(2, 2),
+    #Conv2D(256, (3, 3), activation='relu'),
+    #MaxPooling2D(2, 2),
     # 2D -> 1D로 변환을 위하여 Flatten 합니다.
     Flatten(),
     # 과적합 방지를 위하여 Dropout을 적용합니다.
