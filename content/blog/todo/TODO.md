@@ -25,3 +25,6 @@ draft: true
   
 - ZGC
 - TDC 정리
+
+- Spring Security 정리
+  - Spring Security로 토큰 검증로직 구현
