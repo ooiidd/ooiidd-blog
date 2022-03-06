@@ -68,7 +68,7 @@ public interface Job {
 
   ###생성 및 바인딩
   - 어플리케이션 실행 시 주입 
-    - Java -jar LogBatch.jar requestDate=20220304
+    - Java -jar LogBatch.jar requestDate=20220304 seq(long)=2L date(date)=2021/01/01 age(double)=16.5
   - 코드로 생성
     - JobParameterBuilder, DefaultJobParametersConverter
   - SpEL 이용
@@ -99,6 +99,10 @@ public class JobParameter implements Serializable {
 ---
 
 ##JobExecution
+- JobInstance에 대한 한번의 시도를 의미하는 객체로서 Job 실행중에 발생한 정보들을 저장하고 있는 객체
+- JobExecution은 Failed 또는 Completed등의 Job의 실행 결과 상태를 가지고 있음
+- JobExecution의 실행상태 결과가 Completed면 JobInstance실행이 완료되지 않은것으로 간주해서 재실행이 가능함
+- JobExecution의 실행 상태결과가 'Completed' 될 때까지 하나의 JobInstance 내에서 여러번의 시도가 생길 수 있음.
 
 ---
 
