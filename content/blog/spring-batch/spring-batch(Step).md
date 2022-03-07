@@ -30,3 +30,6 @@ draft: true
 - Step의 StepExecution중 하나라도 실패하면 JobExecution은 실패한다.
 ---
 ##StepContribution
+- 청크 프로세스의 변경 사항을 버퍼링한 후 StepExecution 상태를 업데이트하는 도메인객체
+- 청크 커밋 직전에 StepExecution의 apply 메서드를 호출하여 상태를 업데이트 함
+- ExitStatus의 기본 종료코드외 사용자 정의 종료코드를 생성해서 적용할 수 있음
