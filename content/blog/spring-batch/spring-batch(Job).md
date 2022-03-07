@@ -2,7 +2,7 @@
 title: 'Spring Batch(2) - Job'
 date: 2022-03-04
 category: 'spring batch'
-draft: true
+draft: false
 ---
 
 #Job
