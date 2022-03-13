@@ -42,3 +42,14 @@ draft: false
     - Step 범위 : 각 Step의 StepExecution에 저장되며, Step간 서로 공유 안됨
     - Job 범위 : 각 Job의 JobExecution에 저장되며, Job간 서로 공유 안되고 해당 Job의 Step간 서로 공유됨
 - Job 재시작 시 이미 처리한 Row데이터는 건너뛰고 이후로 수행하도록 할 때 상태 정보를 활용함
+
+```java
+@Component
+public class ExecutionContextTasklet implements Tasklet{
+    @Override
+    public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception{
+        ExecutionContext jobExecutionContext = contribution.getStepExecution().getJobExecution().getExecutionContext();
+        ExecutionContext stepExecutionContext = contribution.getStepExecution().getExecutionContext();
+    }
+}
+```
