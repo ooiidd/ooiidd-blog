@@ -70,3 +70,9 @@ public class ExecutionContextTasklet implements Tasklet{
     - 성능 등의 이유로 도메인 오브젝트를 굳이 데이터베이스에 저장하고 싶지 않을 경우
     - 보통 Test나 프로토타입의 빠른 개발이 필요할 때 사용
 
+###TaskExecutor 비동기
+- TaskExecutor 비동기로 사용하려면 BasicBatchConfigurer 를 DI받아서 TaskExecutor를 SimpleAsyncTaskExecutor로 설정
+```java
+SimpleJobLauncher jobLauncher = (SimpleJobLauncher) basicBatchConfigurer.getJobLauncher();
+jobLauncher.setTaskExecutor(new SimpleAsyncTaskExecutor());
+```
