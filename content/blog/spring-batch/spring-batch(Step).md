@@ -33,7 +33,7 @@ draft: false
 - 청크 프로세스의 변경 사항을 버퍼링한 후 StepExecution 상태를 업데이트하는 도메인객체
 - 청크 커밋 직전에 StepExecution의 apply 메서드를 호출하여 상태를 업데이트 함
 - ExitStatus의 기본 종료코드외 사용자 정의 종료코드를 생성해서 적용할 수 있음
-
+---
 ##ExecutionContext
 - 프레임워크에서 유지 및 관리하는 키/값으로 된 컬렉션
 - StepExecution, JobExecution 객체의 상태를 저장하는 공유객체
@@ -53,7 +53,7 @@ public class ExecutionContextTasklet implements Tasklet{
     }
 }
 ```
-
+---
 ##JobRepository
 - 배치 작업 중의 정보를 저장하는 저장소 역할
 - Job이 언제 수행되었고, 언제 끝났으며, 몇 번이 실행되었고 실행에 대한 결과 등의 배치 작업의 수행과 관련된 모든 meta data를 저장함.
@@ -69,10 +69,28 @@ public class ExecutionContextTasklet implements Tasklet{
   - In Memory 방식으로 설정 - MapJobRepositoryFactoryBean
     - 성능 등의 이유로 도메인 오브젝트를 굳이 데이터베이스에 저장하고 싶지 않을 경우
     - 보통 Test나 프로토타입의 빠른 개발이 필요할 때 사용
+    
+```java
+@Override
+protected JobRepository createJobRepository() throws Exception{
+    JobRepositoryFactoryBean factory = new JobRepositoryFactoryBean();
+    factory.setDataSource(dataSource);
+    factory.setTransactionManager(transactionManager);
+    factory.setIsolationLevelForCreate("ISOLATION_SERIALIZABLE");
+    factory.setTablePrefix("SYSTEM_");
+    factory.setMaxVarCharLength(1000); // varchar 최대길이 default:2500
+    return factory.getObject();
+}
+```
+---
 
-###TaskExecutor 비동기
+##TaskExecutor 비동기
 - TaskExecutor 비동기로 사용하려면 BasicBatchConfigurer 를 DI받아서 TaskExecutor를 SimpleAsyncTaskExecutor로 설정
 ```java
 SimpleJobLauncher jobLauncher = (SimpleJobLauncher) basicBatchConfigurer.getJobLauncher();
 jobLauncher.setTaskExecutor(new SimpleAsyncTaskExecutor());
 ```
+---
+- BatchProperties에서 설정함
+    - application.properties
+    - application.yml
