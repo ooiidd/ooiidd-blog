@@ -91,6 +91,6 @@ SimpleJobLauncher jobLauncher = (SimpleJobLauncher) basicBatchConfigurer.getJobL
 jobLauncher.setTaskExecutor(new SimpleAsyncTaskExecutor());
 ```
 ---
-- BatchProperties에서 설정함
-    - application.properties
-    - application.yml
+
+
+
